@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long num, n_num;
+    n_num = 0;
+    while (true) {
+        cout << "Enter any number" << endl;
+        cin >> num;
+        n_num += 1;
+        if (num < 0) {
+            cout << "The number of number is "<<n_num;
+            break;
+        }
+    }
+
+}
