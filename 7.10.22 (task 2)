@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    long a, b, c, discriminant;
+    cout << "Enter quadratic equation coefficients in due order" << endl;
+    cout << "Enter a (can't be equal zero)" << endl;
+    cin >> a;
+    cout << "Enter b" << endl;
+    cin >> b;
+    cout << "Enter c" << endl;
+    cin >> c;
+    discriminant = b * b - 4 * a * c;
+    if (discriminant < 0) {
+        cout << "No roots";
+    }
+    else if (discriminant == 0) {
+        cout << "There is one root";
+    }
+    else {
+        cout << "There are two roots";
+    }
+}
