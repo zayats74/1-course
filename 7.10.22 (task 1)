@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int direction;
+    cout << "Enter direction (from 1 to 4)" << endl;
+    cin >> direction;
+    switch (direction) {
+    case 1:
+        cout << "Go left (horizontally)" << endl;
+        break;
+    case 2:
+        cout << "Go up (vertically)" << endl;
+        break;
+    case 3:
+        cout << "Go right (horizontally)" << endl;
+        break;
+    case 4:
+        cout << "Go down (vertically)" << endl;
+        break;
+    default:
+        cout << "No such direction. Please, try again.";
+    }
+}
