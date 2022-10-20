@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double x, y;
+    cout << "Enter point coordinates" << endl;
+    cin >> x >> y;
+    if ((x * x + y * y > 4) && abs(x) < 1) {
+        cout << "Yes";
+    }
+    else if ((x * x + y * y < 4) || abs(x) > 1) {
+        cout << "No";
+    }
+    else {
+        cout << "The point is on the border";
+    }
+}
