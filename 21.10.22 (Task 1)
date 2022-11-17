@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double side_eq_trian(double num) {
+	double a = sqrt((4 * num) / sqrt(3.));
+	return a;
+}
+
+double hypotenuse(double num) {
+	double a = sqrt(num * num + num * num);
+	return a;
+
+}
+
+int main()
+{
+	double s;
+	cout << "Введите площадь равностороннего треугольника" << "\n";
+	cin >> s;
+	double P = 2 * side_eq_trian(s) + hypotenuse(side_eq_trian(s));
+	cout << "Периметр прямоугольного треугольника равен " << P << "\n";
+}
