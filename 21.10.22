@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+double F(double &num)
+{
+	if (num != 0) {
+		num = (-1) * num;
+		return true;
+	}
+	if (num == 0) {
+		return false;
+	}
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	double num;
+	cout << "Введите число \n";
+	cin >> num;
+	cout << num << " " << F(num);
+	
+}
