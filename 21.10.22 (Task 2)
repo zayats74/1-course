@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	double max_F1 = 0, max_F2 = 0;
+	double m1, m2, m3;
+	double s12, s23, s31;
+	const double g = 6.67 * pow(10, -11);
+	cout << "Введите массы трех материальных точек \n";
+	cin >> m1 >> m2 >> m3;
+	cout << "Введите расстояние между первой и второй, второй и третьей \
+третьей и первой точками \n";
+	cin >> s12 >> s23 >> s31;
+	double F12 = g * m1 * m2 / (s12 * s12);
+	double F23 = g * m2 * m3 / (s23 * s23);
+	double F31 = g * m1 * m3 / (s31 * s31);
+	\\cout << F12 << " " << F23 << " " << F31 << "\n";
+	max_F1 = max(F12, F23);
+	max_F1 = max(max_F1, F31);
+	max_F2 = max(min(F12,F23),min(F23, F31));
+	max_F2 = min(max_F1, max_F2);
+	cout << "Две большие силы, действующие между точками равны " << max_F1 << ", " << max_F2;
