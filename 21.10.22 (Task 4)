@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+
+double F(double num1, double N)
+{
+	num1 += N;
+	return num1;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	double num1, num2;
+	cout << "Введите два числа \n";
+	cin >> num1 >> num2;
+	cout << F(num1, num2);
+	
+}
