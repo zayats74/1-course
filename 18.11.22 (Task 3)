@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	double eps = pow(10, -1);
+	double x;
+	cin >> x;
+	double sum_ = 0;
+	int i = 2;
+	int fact = 2*3*4;
+	double slagaemoe =  i * (i - 1) * (pow(x, 2 * i) / fact);
+	while (abs(slagaemoe) > eps) {
+		sum_ += slagaemoe;
+		fact = fact * (2 * i + 1) * (2 * i + 2);
+		i++;
+		slagaemoe = i * (i - 1) * (pow(x, 2 * i) / fact);
+	}
+	cout << sum_;
+}
