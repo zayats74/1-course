@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	int k;
+	cin >> k;
+	double x;
+	cin >> x;
+	double sum_ = 0;
+	int fact = 1;
+	for (int i = 1; i <= k; i++) {
+		fact = fact * i;
+		sum_ += fact * pow(x, 2 * i + 1);
+	}
+	cout << sum_;
+}
