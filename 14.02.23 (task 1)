@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+unsigned long long cash[1000]{ 0,0,0,1,1 };
+
+int trib(int x) {
+	if (cash[x]!=0 && x>2) {
+		return cash[x];
+	}
+	if (cash[x] == 0 && x == 1 || x == 2) {
+		return cash[x];
+	}
+	cash[x] = trib(x - 1) + trib(x - 2) + trib(x - 3);
+	return cash[x];
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	trib(n);
+	cout << cash[n];
+}
