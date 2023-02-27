@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int mult(int *x, int p) {
+	if (p == 0) {
+		return 1 * x[0];
+	}
+	else {
+		return x[p] * mult(x, p-1);
+	}
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	int* ar = new int[n];
+	for (int i = 0; i < n; i++) {
+		cin >> ar[i];
+	}
+	cout << mult(ar, n-1);
+	delete[] ar;
+}
