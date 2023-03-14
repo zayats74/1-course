@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+struct T {
+	int p;
+};
+
+template <typename T> int mas(int n) {
+	T* a = new T [n];
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	return a;
+}
+
+
+int main()
+{
+	int n;
+	int t;
+	cin >> n;
+	int *p = mas(n);
+	for (int i = 0; i < n; i++) {
+		cout << p[i] << " ";
+	}
+}
