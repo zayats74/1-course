@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	string* s = new string[n];
+	for (int i = 0; i < n; i++) {
+		cin >> s[i];
+	}
+	string t;
+	string lowkey;
+	int lowindex;
+	int i, j;
+	for (int i = 0; i < n-1; i++) {
+		lowindex = i;
+		lowkey = s[i];
+		for (int j = i + 1; j < n; j++) {
+			if (s[j].length() < lowkey.length()) {
+				lowkey = s[j];
+				lowindex = j;
+			}
+			if (s[j].length() == lowkey.length()) {
+				for (int i = 0; i < lowkey.length(); i++) {
+					if (s[j].at(i) < lowkey.at(i)) {
+						lowkey = s[j];
+						lowindex = j;
+						break;
+					}
+				}
+			}
+		}
+		t = s[i];
+		s[i] = s[lowindex];
+		s[lowindex] = t;
+	}
+	for (int i = 0; i < n; i++) {
+		cout << s[i] << " ";
+	}
+}
