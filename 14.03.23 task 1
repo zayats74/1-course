@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+void tabs(int n) {
+	for (int i = 0; i < n-2; i++) {
+		cout << " ";
+	}
+}
+
+void trang(int n, int t, int z = 1, int s = 0) {
+	if (s != n) {
+		tabs(t);
+		for (int i = 0; i < z; i++) {
+			cout << "*";
+		}
+		cout << "\n";
+		tabs(t-n+s);
+		trang(n, t - 2, z + 2, s + 1);
+
+	}
+
+}
+
+void tree(int k, int c = 0, int p = 2) {
+	if (c != k && k!=0) {
+		trang(p, k * 2 + 1);
+		tree(k, c + 1, p + 1);
+	}
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+	tree(n);
+}
