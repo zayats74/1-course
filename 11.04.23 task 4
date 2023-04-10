@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Rectangle {
+	int x1, y1;
+	int x2, y2;
+	double a, b;
+
+public:
+	Rectangle(int a, int b) {
+		this->a = a;
+		this->b= b;
+		y1 = b;
+		x2 = a;
+		x1 = 0;
+		y2 = 0;
+
+	}
+	Rectangle(int x1, int y1, int x2, int y2) {
+		a = x2 - x1;
+		b = y1 - y2;
+		this->x1 = x1;
+		this->x2 = x2;
+		this->y1 = y1;
+		this->y2 = y2;
+	}
+	Rectangle(int x1, int y1, double a, int b) {
+		this->x1 = x1;
+		this->y1 = y1;
+		this->a = a;
+		this->b = b;
+		x2 = a + x1;
+		y2 = y1 - b;
+	}
+
+	void print() {
+		cout <<"("<< x1 << ";" << y1 << "), ";
+		cout << "(" << x2 << ";" << y2 << "), ";
+		cout << a << ", " << b;
+	}
+
+	void print_points() {
+		cout << "(" << x1 << ";" << y2 << "), "; //левая нижняя
+		cout << "(" << x1 << ";" << y1 << "), "; //левая верхняя
+		cout << "(" << x2 << ";" << y1 << "), "; //правая верхняя
+		cout << "(" << x2 << ";" << y2 << ") "; //правая нижняя
+	}
+
+	int getWidth() {
+		return b;
+	}
+
+	int getLength() {
+		return a;
+	}
+
+	void newLength(int c) {
+		a = c;
+		if (c < a) {
+			x2 = a - x1;
+		}
+		else {
+			x2 = a + x1;
+		}
+	}
+
+	void newWidth(int c) {
+		if (c < b) {
+			b = b - c;
+		}
+		else {
+			b = c;
+		}
+		y1 = b + y2;
+	}
+
+	void Moving(int x, int y) {
+		y2 = y2 + (y - y1);
+		x2 = x2 + (x - x1);
+		x1 = x;
+		y1 = y;
+	}
+
+	int Square() {
+		return a * b;
+	}
+
+	int Perimeter() {
+		return 2 * a + 2 * b;
+	}
+
+	double Diagonal() {
+		return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+	}
+
+};
