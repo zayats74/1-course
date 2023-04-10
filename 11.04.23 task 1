@@ -1,0 +1,13 @@
+bool operator < (BowlingBall a) {
+		return weight < a.weight;
+	}
+
+	bool operator == (BowlingBall a) {
+		if (weight != a.weight) {
+			return false;
+		}
+		if (color != a.color) {
+			return false;
+		}
+		return true;
+	}
