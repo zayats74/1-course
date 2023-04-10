@@ -1,0 +1,108 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BowlingBall {
+	int weight;
+	string color;
+public:
+	static int count;
+	BowlingBall() {
+		count++;
+	} // = default;
+
+	BowlingBall(int weight, string color) {
+		count++;
+		setParams(weight, color);
+	}
+
+	BowlingBall(const BowlingBall& other) {
+		setParams(other.weight, other.color);
+		count++;
+	}
+
+	bool setWeight(int weight) {
+		if (weight > 0) {
+			this->weight = weight;
+			return true;
+		}
+		return false;
+	}
+	bool setColor(string color) {
+		if (color != "") {
+			this->color = color;
+			return true;
+		}
+		return false;
+	}
+	void setParams(int weight, string color) {
+		setWeight(weight);
+		setColor(color);
+	}
+	void print() {
+		cout << weight << " (" << color << ")\n";
+	}
+
+	// ++b
+	BowlingBall& operator++() {
+		weight++;
+		return *this;
+	}
+	// b++
+	BowlingBall operator++(int) {
+		BowlingBall tmp(*this);
+		weight++;
+		return tmp;
+	}
+
+	bool operator < (BowlingBall a) {
+		return weight < a.weight;
+	}
+
+	bool operator == (BowlingBall a) {
+		if (weight != a.weight) {
+			return false;
+		}
+		if (color != a.color) {
+			return false;
+		}
+		return true;
+	}
+
+	static bool isGreater(const BowlingBall& x, const BowlingBall& y) {
+		if (x.weight == y.weight) {
+			return (x.color <= y.color);
+		}
+		else {
+			return (x.weight > y.weight);
+		}
+	}
+
+};
+
+int BowlingBall::count = 0;
+
+int main()
+{
+	int n;
+	cin >> n;
+	BowlingBall* ar = new BowlingBall[n];
+	for (int i = 0; i < n; i++) {
+		int k; string s;
+		cin >> k; cin >> s;
+		ar[i].setParams(k,s);
+	}
+
+	for (int i = 0; i < n-1; i++) {
+		for (int j = n - 1; j > i; j--) {
+			if (BowlingBall::isGreater(ar[j], ar[j-1])) {
+				swap(ar[j], ar[j - 1]);
+			}
+		}
+	}
+	cout << endl;
+	for (int i = 0; i < n; i++) {
+		ar[i].print();
+	}
+}
