@@ -1,0 +1,82 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BowlingBall {
+	int weight;
+	string color;
+public:
+	static int count;
+	BowlingBall() {
+		count++;
+	} // = default;
+
+	BowlingBall(int weight, string color) {
+		count++;
+		setParams(weight, color);
+	}
+
+	BowlingBall(const BowlingBall& other) {
+		setParams(other.weight, other.color);
+		count++;
+	}
+
+	bool setWeight(int weight) {
+		if (weight > 0) {
+			this->weight = weight;
+			return true;
+		}
+		return false;
+	}
+	bool setColor(string color) {
+		if (color != "") {
+			this->color = color;
+			return true;
+		}
+		return false;
+	}
+	void setParams(int weight, string color) {
+		setWeight(weight);
+		setColor(color);
+	}
+	void print() {
+		cout << weight << " (" << color << ")\n";
+	}
+
+	// ++b
+	BowlingBall& operator++() {
+		weight++;
+		return *this;
+	}
+	// b++
+	BowlingBall operator++(int) {
+		BowlingBall tmp(*this);
+		weight++;
+		return tmp;
+	}
+
+	BowlingBall operator+(BowlingBall k) {
+		BowlingBall p;
+		p.weight = weight + k.weight;
+		p.color = color + "-" + k.color;
+		return p;
+	}
+};
+
+int BowlingBall::count = 0;
+
+int main()
+{
+	BowlingBall b(5, "yellow");
+	BowlingBall c(3, "green");
+	int k = 2;
+	(c + b++).print();
+	cout << endl;
+	b.print();
+	b.setParams(5, "yellow");
+	cout << endl;
+	(c + ++b).print();
+	cout << endl;
+	b.print();
+}
